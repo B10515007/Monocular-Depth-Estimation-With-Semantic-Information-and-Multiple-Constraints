@@ -1,0 +1,11 @@
+--encoder res2net101_v1b_bts
+--data_path ../../dataset/nyu_depth_v2/official_splits/test/
+--dataset nyu
+--filenames_file ../train_test_inputs/nyudepthv2_test_files_with_gt.txt
+--model_name bts_nyu13_res2net101_v1b_mask4addloss4shapeconnect
+--checkpoint_path ./models/bts_nyu13_res2net101_v1b_mask4addloss4shapeconnect/model-56100-best_rms_0.37136
+--input_height 480
+--input_width 640
+--max_depth 10
+
+--cfg configs/panoptic_deeplab_R50_os32_cityscapes.yaml

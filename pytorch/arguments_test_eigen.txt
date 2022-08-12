@@ -1,0 +1,14 @@
+--encoder res2net50_v1b_bts
+--data_path ../../dataset/kitti_dataset/
+--dataset kitti
+--filenames_file ../train_test_inputs/eigen_test_files_with_gt.txt
+--model_name bts_eigen_res2net50_v1b
+--checkpoint_path ./models/bts_eigen_res2net50_v1b/model-88000-best_abs_rel_0.05695
+--input_height 352
+--input_width 1216
+--max_depth 80
+--do_kb_crop
+--save_lpg
+
+--cfg configs/panoptic_deeplab_R50_os32_cityscapes.yaml
+
