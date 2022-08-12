@@ -7,7 +7,7 @@ KITTI
 ![](https://i.imgur.com/fexqX86.jpg](https://github.com/B10515007/Monocular-Depth-Estimation-With-Semantic-Information-and-Multiple-Constraints/blob/main/picture/KITTI_vis.png))
 
 NYUv2
-![](https://i.imgur.com/o1ZW9Wp.jpg](https://i.imgur.com/fexqX86.jpg](https://github.com/B10515007/Monocular-Depth-Estimation-With-Semantic-Information-and-Multiple-Constraints/blob/main/picture/NYU_vis.png))
+![](https://i.imgur.com/fexqX86.jpg](https://github.com/B10515007/Monocular-Depth-Estimation-With-Semantic-Information-and-Multiple-Constraints/blob/main/picture/NYU_vis.png)
 
 
 ## Dockerfile
