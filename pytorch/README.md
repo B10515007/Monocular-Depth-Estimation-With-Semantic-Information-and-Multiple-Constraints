@@ -1,13 +1,13 @@
 # Monocular Depth Estimation With Semantic Information And Multiple Contraints 
 We propose our monocular depth estimation model that leverages high-level and multi- scale information and dynamically adjusts the field of view to achieve state-of-the-art performance. Finally, we apply multi- loss to limit the development of features and ensure accuracy after fusion.
 
-![](https://i.imgur.com/9rg3G1P.jpg)
+![](https://github.com/B10515007/Monocular-Depth-Estimation-With-Semantic-Information-and-Multiple-Constraints/blob/main/picture/overview.png)
 ## Demo
 KITTI
-![](https://i.imgur.com/fexqX86.jpg)
+![](https://github.com/B10515007/Monocular-Depth-Estimation-With-Semantic-Information-and-Multiple-Constraints/blob/main/picture/KITTI_vis.png)
 
 NYUv2
-![](https://i.imgur.com/o1ZW9Wp.jpg)
+![](https://github.com/B10515007/Monocular-Depth-Estimation-With-Semantic-Information-and-Multiple-Constraints/blob/main/picture/NYU_vis.png)
 
 
 ## Dockerfile
