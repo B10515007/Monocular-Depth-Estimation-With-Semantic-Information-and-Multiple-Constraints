@@ -1,13 +1,13 @@
 # Monocular Depth Estimation With Semantic Information And Multiple Contraints 
 We propose our monocular depth estimation model that leverages high-level and multi- scale information and dynamically adjusts the field of view to achieve state-of-the-art performance. Finally, we apply multi- loss to limit the development of features and ensure accuracy after fusion.
 
-![](https://i.imgur.com/9rg3G1P.jpg)
+![](https://github.com/B10515007/Monocular-Depth-Estimation-With-Semantic-Information-and-Multiple-Constraints/blob/main/picture/overview.png)
 ## Demo
 KITTI
-![](https://i.imgur.com/fexqX86.jpg)
+![](https://github.com/B10515007/Monocular-Depth-Estimation-With-Semantic-Information-and-Multiple-Constraints/blob/main/picture/KITTI_vis.png)
 
 NYUv2
-![](https://i.imgur.com/o1ZW9Wp.jpg)
+![](https://github.com/B10515007/Monocular-Depth-Estimation-With-Semantic-Information-and-Multiple-Constraints/blob/main/picture/NYU_vis.png)
 
 
 ## Dockerfile
@@ -222,13 +222,19 @@ KITTI 中有圖片遺失是正常的，NYUv2 則沒有遺失圖片
 | Ours  | 0-10m | 0.104   | 0.375 | 0.045 |
 
 ## Inference
-執行時須加入的參數如下：
+把 [pretrain weights](https://mailntustedutw-my.sharepoint.com/:f:/g/personal/m10915014_ms_ntust_edu_tw/EsCch5E0C49Iuh-sYO_w2mMBS1ASiranPUuSmjoLQ5CdtQ?e=bgB98M) 中資料夾下載，並複製到 /models 中
+
+執行時須更改的參數如下：
 --model_name (model name)
 --encoder (maybe res2net50_v1b_bts)
 --max_depth (10 for NYU, 80 for kitti)
 --checkpoint_path (model path)
 --dataset (kitti or nyuv2)
+--image_path (資料夾路徑)
+
+成果會在跟 bts_sequence.py 同個目錄底下，名子叫做 'result_sequence_' + args.model_name
 
 ```bash
-$ python bts_sequence.py --image_path <image_folder_path>
+$ python bts_sequence.py arguments_inference_eigen.txt
 ```
+

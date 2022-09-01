@@ -1,0 +1,14 @@
+--encoder res2net50_v1b_bts
+--dataset kitti
+--model_name KITTI_50_noDCN
+--checkpoint_path ./models/KITTI_50_noDCN/model-103500-best_log10_0.02417
+--input_height 352
+--input_width 1216
+--max_depth 80
+--do_kb_crop
+--save_lpg
+
+--cfg configs/panoptic_deeplab_R50_os32_cityscapes.yaml
+
+--image_path depth1020
+

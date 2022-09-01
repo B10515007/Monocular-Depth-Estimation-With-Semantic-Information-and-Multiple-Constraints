@@ -49,7 +49,11 @@ def convert_arg_line_to_args(arg_line):
 #python3 bts_sequence.py --image_path test --dataset kitti --max_depth 80 --model_name bts_eigen_v2_pytorch_densenet161 
 parser = argparse.ArgumentParser(description='BTS PyTorch implementation.', fromfile_prefix_chars='@')
 parser.convert_arg_line_to_args = convert_arg_line_to_args
-
+parser.add_argument('--cfg',                       help='experiment configure file name',   required=True, type=str)
+parser.add_argument('opts',
+                        help="Modify config options using the command-line",
+                        default=None,
+                        nargs=argparse.REMAINDER)
 parser.add_argument('--model_name', type=str, help='model name', default='bts_nyu_v2_pytorch_densenet161')
 parser.add_argument('--encoder', type=str, help='type of encoder, vgg or desenet121_bts or densenet161_bts',
                     default='densenet161_bts')
@@ -77,6 +81,8 @@ for key, val in vars(__import__(args.model_name)).items():
         continue
     vars()[key] = val
 
+from segmentation.config import config, update_config
+update_config(config, args)
 
 def test(params):
     """Test function."""
@@ -103,7 +109,7 @@ def test(params):
         return
         
     # apply transformations    
-    loader_transforms = transforms.Compose([
+    loader_transforms = transforms.Compose([            
                 transforms.ToTensor(),
                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
             ])
@@ -118,7 +124,8 @@ def test(params):
     with torch.no_grad():
         for _, image in enumerate(tqdm(images)):   
               
-            image = PIL.Image.open(image)        
+            image = PIL.Image.open(image)
+            image = image.resize((args.input_width,args.input_height))     
             image = loader_transforms(image).float().cuda()
             # add fake batch dimension i.e. [3, 480, 640] -> [1, 3, 480, 640]
             image = image.unsqueeze(0)
@@ -175,7 +182,7 @@ def test(params):
         pred_1x1 = pred_1x1s[s]
         
         # cv2.imshow(pred_depth)
-        print(pred_depth)
+        # print(pred_depth)
 
         if args.dataset == 'kitti' or args.dataset == 'kitti_benchmark':
             pred_depth_scaled = pred_depth * 256.0
@@ -183,12 +190,12 @@ def test(params):
             pred_depth_scaled = pred_depth * 1000.0
 
         # cv2.imshow(pred_depth)
-        print(pred_depth_scaled)
+        # print(pred_depth_scaled)
         
         pred_depth_scaled = pred_depth_scaled.astype(np.uint16)
         cv2.imwrite(filename_pred_png, pred_depth_scaled, [cv2.IMWRITE_PNG_COMPRESSION, 0])
 
-        print(pred_depth_scaled)
+        # print(pred_depth_scaled)
         # cv2.imshow(filename_pred_png, pred_depth_scaled)
         
         if args.save_lpg:
